@@ -58,7 +58,7 @@ const Sidebar = ({ user, closeToogle }) => {
       {user && (
         <Link
         to={`user-profile/${user._id}`}
-        className='flex absolute bottom-0 left-0 my-5 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3'
+        className='flex fixed bottom-0 left-0 my-5 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3 z-10'
         onClick={handleCloseSidebar}
         >
         <img src={user.image} className='w-10 h-10 rounded-full' alt='user-profile'/>
