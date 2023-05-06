@@ -9,14 +9,14 @@ import { client } from '../client';
 
 const randomlmage = 'https://source.unsplash.com/1600x900/?nature,photography,technology'
 
-const activeBtnStyles = 'bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none' 
+const activeBtnStyles = 'bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none';
 const notActiveBtnStyles = 'bg-primary mr-4 text-black font-bold p-2 rounded-full w-20 outline-none' 
 
 const UserProfile = () => {
     const [ user, setUser] = useState(null);
     const [ pins, setPins] = useState(null);
     const [ text, setText] = useState('Created');
-    const [ activeBtn, setActiveBtn] = useState(' created');
+    const [ activeBtn, setActiveBtn] = useState('created');
 
     const navigate = useNavigate();
     const { userId } = useParams();
@@ -86,7 +86,6 @@ const UserProfile = () => {
   className={`${activeBtn === 'created' ? activeBtnStyles : notActiveBtnStyles}`}
   >
   Created
-  
   </button>
   <button
   type='button'
@@ -95,10 +94,9 @@ const UserProfile = () => {
     setActiveBtn('saved');
 
   }}
-  className={`${activeBtn === 'created' ? activeBtnStyles : notActiveBtnStyles}`}
+  className={`${activeBtn === 'saved' ? activeBtnStyles : notActiveBtnStyles}`}
   >
-  Created
-  
+  Saved  
   </button>
   </div>
   </div>
