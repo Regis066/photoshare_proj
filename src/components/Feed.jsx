@@ -27,10 +27,10 @@ const Feed = () => {
         .then((data)=>{
           setPins(data);
           setLoading(false)
-        })
+        } )
 
       }
-  })
+  },[categoryId])
 
   if(loading) return <Spinner message="We are adding new ideas to your feed"/>
   return (
