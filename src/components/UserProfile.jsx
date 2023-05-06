@@ -9,6 +9,8 @@ import { client } from '../client';
 
 const randomlmage = 'https://source.unsplash.com/1600x900/?nature,photography,technology'
 
+const activeBtnStyles = 'bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none' 
+
 const UserProfile = () => {
     const [ user, setUser] = useState(null);
     const [ pins, setPins] = useState(null);
@@ -71,6 +73,19 @@ const UserProfile = () => {
     />
   )}
   </div>
+  </div>
+  <div className="text-center mb-7">
+  <button
+  type='button'
+  onChange={(e) =>{
+    setText(e.target.textContent);
+    setActiveBtn('created');
+
+  }}
+  className={`${activeBtn === 'created' ? activeBtnStyles : notActiveBtnStyles}`}
+  >
+  
+  </button>
   </div>
   </div>
   </div>
