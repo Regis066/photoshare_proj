@@ -104,7 +104,7 @@ const PinDetail = ({user}) => {
     src={pinDetail.postedBy.image}
     alt='user-profile'
     />
-    <p className='font-semibold capitalize'>{user.username}</p>
+    <p className='font-semibold capitalize'>{user.name}</p>
     </Link>
     <h2 className='mt-5 text-2xl'>Comments</h2>
     <div className='max-h-370 overflow-y-auto'>
