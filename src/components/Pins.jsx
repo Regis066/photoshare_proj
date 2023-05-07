@@ -17,7 +17,7 @@ const Pins = ({pin: {postedBy , image, _id , destination, asset , save}}) => {
   const user = fetchUser();
 
   //SPECIFY IF THE USER HAS SAVED A SPECIFIC POST
-  let alreadySaved = !!(save && save.filter((item)=>item.postedBy._id === user.googleId))?.length;
+  let alreadySaved = !!(save && save.filter((item)=>item.postedBy._id === user && user.googleId))?.length;
 
   const savePin = (id) =>{
     if(!alreadySaved){
