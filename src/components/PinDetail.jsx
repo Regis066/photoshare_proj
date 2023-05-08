@@ -7,6 +7,7 @@ import { client,urlFor } from '../client';
 import {MasonryLayout} from './index';
 import { pinDetailMorePinQuery,pinDetailQuery } from '../utils/data';
 import Spinner from './Spinner';
+import { fetchUser } from '../utils/fetchUser';
 
 
 // const {postedBy , image, _id , destination, asset , save} = pin;
@@ -18,12 +19,12 @@ const PinDetail = ({user}) => {
   const [comment, setComment] = useState(''); 
   const [addingComment, setAddingComment] = useState(false); 
   const {pinId} = useParams();
-
+  let userinfo = fetchUser(); 
   
   const addComment = () =>{
     if(comment){
       setAddingComment(true);
-    }
+    
     client
     .patch(pinId)
     .setIfMissing({comments: []})
@@ -42,6 +43,7 @@ const PinDetail = ({user}) => {
       setAddingComment(false);
 
     })
+  }
   }
   const fetchPinDetails = ()=>{
     let query = pinDetailQuery(pinId);
@@ -71,7 +73,7 @@ const PinDetail = ({user}) => {
   // ID...
   return (
     <>
-    <div className='flex xl-flex-row flex--col m-auto bg-white' style={{ maxWidth: '1500px', borderRadius: '32px'}}>
+    <div className='flex xl-flex-row flex-col m-auto bg-white' style={{ maxWidth: '1500px', borderRadius: '32px'}}>
      <div className='flex justify-center items-center md:items-start flex-initial'>
      <img 
      src={pinDetail && pinDetail.image && urlFor(pinDetail.image).url()}
@@ -95,16 +97,16 @@ const PinDetail = ({user}) => {
      </a>
      </div>
      <div>
-     <h1 className='text-4xl font-bold break-words mt-3'>{pinDetail.title}</h1>
-     <p className='mt-3'>{pinDetail.about}</p>
+     <h1 className='text-4xl font-bold break-words mt-3'>Title : {pinDetail.title}</h1>
+     <p className='mt-3'>About : {pinDetail.about}</p>
      </div>
      <Link to={`user-profile/${pinDetail.postedBy._id}`} className='flex gap-2 mt-5 items-center bg-white rounded-lg'>
     <img 
-    className='w-8 h-8 rounded-full object-cover'
+    className='w-8 h-8 rounded-full object-cover cursor-pointer'
     src={pinDetail.postedBy.image}
     alt='user-profile'
     />
-    <p className='font-semibold capitalize'>{user.name}</p>
+    <p>{userinfo.name}</p>
     </Link>
     <h2 className='mt-5 text-2xl'>Comments</h2>
     <div className='max-h-370 overflow-y-auto'>
@@ -118,7 +120,7 @@ const PinDetail = ({user}) => {
         className='w-10 h-10 rounded-full cursor-pointer'
         />
         <div className='flex flex-col'>
-        <p className='font-bold'>{comment.postedBy.username}</p>
+        <p className='font-bold'>{userinfo.name}</p>
         <p>{comment.comment}</p>
         </div>
         

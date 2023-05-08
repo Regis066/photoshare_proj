@@ -17,7 +17,7 @@ const Pins = ({pin: {postedBy , image, _id , destination, asset , save}}) => {
   const user = fetchUser();
 
   //SPECIFY IF THE USER HAS SAVED A SPECIFIC POST
-  let alreadySaved = !!(save && save.filter((item)=>item.postedBy._id === user && user.googleId))?.length;
+  let alreadySaved = !!(save && save.filter((item)=>item.postedBy._id === user.googleId))?.length;
 
   const savePin = (id) =>{
     if(!alreadySaved){
@@ -62,7 +62,7 @@ const Pins = ({pin: {postedBy , image, _id , destination, asset , save}}) => {
     onClick={()=> navigate(`/pin-detail/${_id}`)}
     className='relative cursor-zoom-in w-auto hover:shadow-lg rounded-lg-overflow-hidden transition-all duration-500 ease-out'
     > 
-    {image && <img className='rounded-lg w-full' alt='user-post' src={urlFor(image).width(250).url()} />}
+    {image && <img className='rounded-lg w-full' alt='user-post' src={urlFor(image).width(256).url()} />}
     {postHovered && (
       <div
       className='absolute top-0 w-full h-full flex flex-col justify-between p-1 pr-2 py-2 z-50'
@@ -106,7 +106,7 @@ const Pins = ({pin: {postedBy , image, _id , destination, asset , save}}) => {
         className='bg-white flex items-center text-black font-bold p-2 pl-2 pr-2 gap-1 rounded-full opacity-70 hover:100 hover:shadow-md'
         >
         <BsFillArrowUpRightCircleFill />
-         {destination.length > 15 ? `${destination.slice(0,15)}`: destination}...
+         {destination.length > 15 ? `${destination.slice(8,15)}`: destination}...
         </a>
       )}
       {postedBy && postedBy._id === user.googleId && (
@@ -134,7 +134,7 @@ const Pins = ({pin: {postedBy , image, _id , destination, asset , save}}) => {
     src={postedBy && postedBy.image}
     alt='user-profile'
     />
-    <p className='font-semibold capitalize'>{user.name}</p>
+    <p className='font-semibold capitalize'>{postedBy && postedBy.username}</p>
     </Link>
     )}
     

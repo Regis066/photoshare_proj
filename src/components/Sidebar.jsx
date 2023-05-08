@@ -13,7 +13,7 @@ const Sidebar = ({ user, closeToogle }) => {
     if (closeToogle) closeToogle(false);
   }
   return (
-    <div className='flex felx-col justify-between bg-white h-full overflow-y-scrikk min-w-210 hide-scrollbar'>
+    <div className='flex flex-col justify-between bg-white h-full overflow-y-scroll min-w-210 hide-scrollbar'>
       <div className='flex flex-col'>
       <Link
       to='/'
@@ -50,7 +50,7 @@ const Sidebar = ({ user, closeToogle }) => {
       {user && (
         <Link
         to={`user-profile/${user._id}`}
-        className='flex fixed bottom-0 left-0 my-5 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3 z-10'
+        className='flex bottom-0 left-0 mt-10 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3'
         onClick={handleCloseSidebar}
         >
         <img src={user.image} className='w-10 h-10 rounded-full' alt='user-profile'/>
